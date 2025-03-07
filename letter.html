@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sealed Letter</title>
+    <style>
+        /* Full-screen centered layout */
+        body {
+            background-color: #ffd6e0; /* Soft pink */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        /* Position elements on top of each other */
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style for the seal */
+        .seal {
+            font-size: 80px;
+            cursor: pointer;
+            position: absolute;
+            transition: opacity 1s ease-in-out, transform 0.2s ease-in-out;
+            width: 100%;
+            height: 70%;
+        }
+
+        .seal:hover {
+            transform: scale(1.1);
+        }
+
+        /* Style for the letter (hidden by default) */
+        .letter {
+            width: 300px;
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+         <img class="seal" id="seal" src="seal.png" alt="Wax Seal">
+        <img class="letter" id="letter" src="letter.png" alt="Opened Letter"> <!-- Replace with your image -->
+    </div>
+
+    <script>
+        document.getElementById("seal").addEventListener("click", function() {
+            let seal = document.getElementById("seal");
+            let letter = document.getElementById("letter");
+
+            // Start fading out the seal and fading in the letter at the same time
+            seal.style.opacity = "0";
+            letter.style.visibility = "visible"; // Make letter visible
+            letter.style.opacity = "1"; // Fade in the letter
+
+            // After fade-out, remove the seal
+            setTimeout(() => {
+                seal.style.display = "none";
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
